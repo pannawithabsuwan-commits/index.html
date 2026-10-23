@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>City Hub – Premium Scripts</title>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#e9e6ff;--muted:#a9a5d6;--line:#3d3a85;--bl:#7c5cff;--cy:#5ad7ff;--err:#f87171;--ok:#34d399;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+html{scroll-padding-top:90px}
+body{margin:0;font-family:Kanit,"Noto Sans Thai",system-ui,sans-serif;color:var(--ink);background:#f0f0f0;min-height:100vh}
+body::before{content:"";position:fixed;inset:0;z-index:-1;background:radial-gradient(900px 480px at 12% 0,#fff 0,transparent 62%),radial-gradient(800px 480px at 92% 8%,#fff6df 0,transparent 62%),radial-gradient(700px 500px at 0 75%,#cfe8ff 0,transparent 60%),radial-gradient(700px 500px at 100% 85%,#ffe9c4 0,transparent 60%),linear-gradient(180deg,#bfe0ff 0,#e9f5ff 45%,#fff8e8 100%)}
+a{color:inherit;text-decoration:none}
+svg.i{width:1em;height:1em;vertical-align:-.12em;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.page{display:none}.page.on{display:block}
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;display:flex;align-items:center;gap:22px;padding:12px 28px;background:linear-gradient(90deg,rgba(255,255,255,.92),rgba(255,247,229,.92));backdrop-filter:blur(8px);box-shadow:0 2px 8px rgba(0,0,0,.12);flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;font-weight:800;font-size:22px;margin-right:6px;cursor:pointer}
+.logo{background:linear-gradient(90deg,#2f86f0,#e0a82e);-webkit-background-clip:text;background-clip:text;color:transparent}
+.links{display:flex;gap:20px;flex:1;flex-wrap:wrap;font-weight:500;font-size:15px}
+.links a{cursor:pointer;display:flex;gap:6px;align-items:center}
+.links a:hover{color:var(--bl)}
+.sbox{display:flex;align-items:center;gap:8px;background:#fff;border-radius:99px;padding:9px 18px;font-size:13px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.sbox input{border:0;outline:0;font:inherit;width:110px;background:none}
+.btn{border:0;border-radius:10px;padding:10px 18px;font:inherit;font-size:13px;font-weight:500;background:#e6e8ee;color:var(--ink);cursor:pointer}
+.btn.pri{background:var(--bl);color:#fff}
+body.authpg nav{display:none}
+.chip{display:inline-flex;align-items:center;gap:8px;background:#fff;border-radius:99px;padding:8px 16px;font-size:14px;box-shadow:0 1px 4px rgba(0,0,0,.1)}
+.coin{width:18px;height:18px;border-radius:50%;background:#f5a623;color:#fff;font-style:normal;font-size:12px;display:grid;place-content:center}
+.warn{background:#fff0f0;border-radius:18px;padding:22px 28px;color:#c81e1e;display:flex;gap:18px;box-shadow:0 2px 10px rgba(0,0,0,.1);margin-top:14px}.warn b{display:block;margin-bottom:6px}.warn span{font-size:26px}
+.tt{text-align:center;color:var(--ink);margin:36px 0 24px}.tt h1{margin:0;font-size:48px}.tt p{margin:6px 0 0;font-size:18px}
+.methods{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:18px}
+.mcard{background:rgba(255,255,255,.92);border-radius:24px;padding:22px;cursor:pointer;box-shadow:0 4px 18px rgba(0,0,0,.12);border:2px solid transparent;transition:transform .15s}.mcard:hover,.mcard.on{transform:translateY(-3px);border-color:#10b981}
+.mcard .top{display:flex;justify-content:space-between;align-items:flex-start}.env{width:84px;height:84px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px #dbeafe;display:grid;place-content:center;font-size:44px}
+.go{width:40px;height:40px;border-radius:50%;background:#e6e8ee;display:grid;place-content:center}
+.mcard h3{margin:18px 0 8px;font-size:21px}.mcard p{margin:0 0 14px;color:var(--muted);font-size:14px}
+.free{display:inline-block;background:#d1fae5;color:#065f46;font-size:12px;font-weight:700;padding:6px 12px;border-radius:99px}
+.tform{background:rgba(255,255,255,.95);border-radius:24px;padding:24px;margin-top:20px;max-width:760px}
+.tform .note{background:#ecfdf5;border:1px solid #a7f3d0;color:#065f46;font-weight:700;text-align:center;padding:14px;border-radius:14px;margin:12px 0}
+.green{background:#10b981}
+.thumb{position:relative}.badge{position:absolute;top:10px;left:10px;padding:4px 12px;border-radius:99px;color:#fff;font-size:12px;font-weight:700}
+.old{color:#94a3b8;text-decoration:line-through;font-size:14px;margin-left:6px;font-weight:400}
+.agrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.agrid .w2{grid-column:span 2}.agrid .w4{grid-column:span 4}
+.agrid input.t,.agrid select{padding:12px 14px;width:100%;font:inherit;border:1px solid var(--line);border-radius:14px;background:#fff}
+.arow{display:flex;align-items:center;gap:14px;background:#fff;border-radius:14px;padding:10px 14px;margin-top:10px;box-shadow:0 1px 6px rgba(0,0,0,.1)}
+.arow .ic{font-size:30px}.arow .nm{flex:1}.arow small{color:var(--muted)}.arow.off{opacity:.55}
+.btn.red{background:#fee2e2;color:#991b1b}
+@media (max-width:820px){.agrid{grid-template-columns:1fr 1fr}.agrid .w2,.agrid .w4{grid-column:span 2}}
+/* home */
+main{max-width:min(1400px,94vw);margin:12px auto 40px;padding:0 10px}
+.hero{border-radius:12px;aspect-ratio:3/1;min-height:190px;display:grid;place-content:center;text-align:center;background:radial-gradient(520px 200px at 50% 45%,#fff 0,transparent 70%),linear-gradient(135deg,#9ccfff,#dff0ff 55%,#fff1d1);overflow:hidden;position:relative}
+.hero::before,.hero::after{content:"";position:absolute;top:0;bottom:0;width:22%;background:linear-gradient(115deg,transparent 40%,rgba(255,255,255,.95) 41%,rgba(255,226,160,.7) 60%,transparent 61%);opacity:.8}
+.hero::before{left:0}.hero::after{right:0;transform:scaleX(-1)}
+.hero h1{position:relative;z-index:1;margin:0;font-size:clamp(32px,8.5vw,92px);font-weight:800;letter-spacing:.05em;line-height:1;background:linear-gradient(90deg,#2f86f0,#e0a82e);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 2px 10px rgba(255,255,255,.95))}
+.hero p{position:relative;z-index:1;margin:8px 0 0;font-weight:800;letter-spacing:.35em;font-size:clamp(11px,2.4vw,26px);color:#4b6a9b}
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
+.tile{border-radius:14px;height:124px;display:flex;align-items:center;justify-content:center;gap:12px;background:linear-gradient(135deg,#fff,#dff0ff);color:var(--ink);border:1px solid #bcdcff;cursor:pointer;box-shadow:0 2px 10px rgba(80,140,220,.2);transition:transform .15s;overflow:hidden}
+.tile:hover{transform:translateY(-3px)}
+.tile svg{width:54px;height:54px;color:#2f86f0}
+.tile b{display:block;font-size:20px;font-weight:700;line-height:1.1}
+.tile em{display:block;font-size:22px;font-weight:800;color:#d99a1d;transform:skewX(-8deg)}
+h2.sec{display:flex;align-items:center;gap:10px;color:var(--ink);font-size:22px;margin:30px 0 12px}
+.cgrid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cgrid .c{height:110px;border-radius:12px;display:flex;align-items:center;padding:0 26px;gap:16px;background:linear-gradient(135deg,#fff,#fff4dc);color:var(--ink);font-weight:700;font-size:22px;cursor:pointer;border:1px solid #bcdcff}
+.cgrid .c.on{outline:3px solid var(--cy)}
+.cgrid .c span{font-size:36px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px;margin-top:20px}
+.card{background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.12);display:flex;flex-direction:column}
+.thumb{height:120px;display:grid;place-content:center;font-size:42px;background:linear-gradient(135deg,#dff0ff,#fff4dc)}
+.card .b{padding:14px;display:flex;flex-direction:column;gap:6px;flex:1}
+.card h3{margin:0;font-size:17px}.card p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.pr{display:flex;justify-content:space-between;align-items:center;margin-top:8px}.pr b{color:var(--bl);font-size:20px}
+.panel{background:rgba(255,255,255,.9);border-radius:14px;padding:18px 22px;margin-top:14px;line-height:1.8;color:var(--muted)}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:14px}
+/* auth */
+.auth{display:grid;grid-template-columns:1fr 1fr;min-height:100vh}
+.aleft{display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:0 12%;position:relative}
+.aleft .bar{border-left:5px solid #f0b84a;padding-left:26px;margin-top:0}
+.aleft h1{margin:0 0 8px;font-size:34px;font-weight:800}
+.aleft p{margin:0;font-size:17px;font-weight:500;color:#4b5873}
+.aright{background:linear-gradient(135deg,#f7f9fc,#e3f1ff);display:flex;align-items:center;justify-content:center;padding:30px 20px;box-shadow:-6px 0 24px rgba(0,0,0,.08)}
+form{width:100%;max-width:440px}
+form h2{margin:0 0 18px;font-size:30px}
+.f{margin-bottom:12px}
+label.l{display:block;font-weight:700;font-size:13px;margin-bottom:6px}
+.in{position:relative}
+.in>svg.i{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:#8a98b8;font-size:18px}
+input.t{width:100%;font:inherit;font-size:15px;padding:14px 46px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink)}
+input.t:focus{outline:2px solid var(--bl);border-color:var(--bl)}
+input.t[aria-invalid="true"]{border-color:var(--err)}
+.eye{position:absolute;right:10px;top:50%;transform:translateY(-50%);border:0;background:none;cursor:pointer;color:#8a98b8;font-size:20px;padding:6px}
+.msg{font-size:13px;min-height:17px;margin-top:3px;color:var(--err)}.msg.ok{color:var(--ok)}
+.meter{display:flex;gap:4px;margin-top:6px}.meter i{flex:1;height:5px;border-radius:3px;background:#dde5f5}
+.meter[data-s="1"] i:nth-child(-n+1){background:var(--err)}.meter[data-s="2"] i:nth-child(-n+2){background:#f59e0b}.meter[data-s="3"] i:nth-child(-n+3){background:#84cc16}.meter[data-s="4"] i{background:var(--ok)}
+.chk{display:flex;gap:8px;font-size:14px;margin:4px 0 14px;align-items:flex-start}.chk input{margin-top:5px}
+.submit{width:100%;border:0;border-radius:16px;padding:16px;font:inherit;font-weight:700;font-size:16px;background:var(--bl);color:#fff;cursor:pointer}
+.submit:disabled{background:#e6e8ee;color:var(--ink);cursor:not-allowed}
+.or{display:flex;align-items:center;gap:12px;color:var(--muted);font-size:13px;margin:16px 0}.or::before,.or::after{content:"";flex:1;height:1px;background:var(--line)}
+.alt{display:block;text-align:center;border:1px solid var(--line);border-radius:16px;padding:13px;background:#fff;font-weight:500;cursor:pointer}
+.status{margin-top:12px;padding:12px 14px;border-radius:12px;font-size:14px;display:none}.status.show{display:block}
+.good{background:#dcfce7;color:#14532d}.bad{background:#fee2e2;color:#7f1d1d}
+.hp{position:absolute;left:-9999px}
+#toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);background:var(--ink);color:#fff;padding:10px 20px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}#toast.show{opacity:1}
+:focus-visible{outline:2px solid var(--cy);outline-offset:2px}
+@media (min-width:1100px){nav{padding:12px max(28px,calc((100vw - 1400px)/2))}.hero{aspect-ratio:4/1}.tile{height:150px}.pgrid{grid-template-columns:repeat(4,1fr)}.cgrid{grid-template-columns:repeat(3,1fr)}.aleft{padding:0 14%}.aright form{max-width:520px}}
+@media (max-width:820px){.tiles{grid-template-columns:repeat(2,1fr)}.cgrid{grid-template-columns:1fr}.auth{grid-template-columns:1fr}.aleft{padding:30px 24px;min-height:200px}.aleft .bar{margin-top:0}nav{padding:10px 14px}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ธีมเหมือง: ฟ้า-ม่วง มืด */
+body{background:#0a0820}
+body::before{background:radial-gradient(800px 500px at 15% 10%,rgba(124,92,255,.35),transparent 60%),radial-gradient(700px 500px at 90% 30%,rgba(59,156,255,.28),transparent 60%),radial-gradient(900px 600px at 50% 110%,rgba(168,85,247,.35),transparent 60%),linear-gradient(180deg,#05040f 0,#0d0a2e 50%,#150d45 100%)}
+body::after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='170' height='80'%3E%3Cpolygon points='0,0 170,0 170,6 150,6 138,58 124,6 98,6 82,36 66,6 36,6 22,70 8,6 0,6' fill='%2304030c'/%3E%3C/svg%3E") repeat-x top left/170px 80px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='280'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='1' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%233b9cff'/%3E%3Cstop offset='1' stop-color='%23c9a8ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%235ad7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg%3E%3Cpolygon points='20,280 70,120 110,280' fill='url%28%2523a%29' opacity='.9'/%3E%3Cpolygon points='90,280 150,40 200,280' fill='url%28%2523b%29'/%3E%3Cpolygon points='170,280 220,150 270,280' fill='url%28%2523a%29' opacity='.85'/%3E%3Cpolygon points='150,40 175,280 200,280' fill='%2523ffffff' opacity='.18'/%3E%3Cpolygon points='250,280 285,200 320,280' fill='url%28%2523b%29' opacity='.8'/%3E%3C/g%3E%3C/svg%3E") no-repeat left bottom/340px 280px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='340' height='280'%3E%3Cdefs%3E%3ClinearGradient id='a' x1='0' y1='1' x2='0' y2='0'%3E%3Cstop offset='0' stop-color='%233b9cff'/%3E%3Cstop offset='1' stop-color='%23c9a8ff'/%3E%3C/linearGradient%3E%3ClinearGradient id='b' x1='0' y1='1' x2='1' y2='0'%3E%3Cstop offset='0' stop-color='%237c5cff'/%3E%3Cstop offset='1' stop-color='%235ad7ff'/%3E%3C/linearGradient%3E%3C/defs%3E%3Cg transform='translate%28340,0%29 scale%28-1,1%29'%3E%3Cpolygon points='20,280 70,120 110,280' fill='url%28%2523a%29' opacity='.9'/%3E%3Cpolygon points='90,280 150,40 200,280' fill='url%28%2523b%29'/%3E%3Cpolygon points='170,280 220,150 270,280' fill='url%28%2523a%29' opacity='.85'/%3E%3Cpolygon points='150,40 175,280 200,280' fill='%2523ffffff' opacity='.18'/%3E%3Cpolygon points='250,280 285,200 320,280' fill='url%28%2523b%29' opacity='.8'/%3E%3C/g%3E%3C/svg%3E") no-repeat right bottom/340px 280px;filter:drop-shadow(0 0 14px rgba(90,215,255,.45))}
+nav{background:linear-gradient(90deg,rgba(10,8,36,.92),rgba(34,18,88,.92));box-shadow:0 2px 16px rgba(124,92,255,.35);border-bottom:1px solid #2d2a73}
+.logo{background:linear-gradient(90deg,#5ad7ff,#b79cff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.links a:hover{color:var(--cy)}
+.sbox,.chip{background:#1a1745;color:var(--ink);box-shadow:none;border:1px solid #2f2b78}
+.sbox input{color:var(--ink)}
+.btn{background:#2a2765;color:var(--ink)}
+.btn.pri,.submit{background:linear-gradient(135deg,#7c5cff,#3b9cff);color:#fff}
+.submit:disabled{background:#2a2765;color:var(--muted)}
+.submit.green{background:#10b981}
+.btn.red{background:#4c1d1d;color:#fecaca}
+.warn{background:rgba(127,29,29,.35);color:#fecaca;border:1px solid #7f1d1d;box-shadow:none}
+.mcard,.tform,.panel,.card,.arow{background:rgba(24,20,66,.85);border:1px solid #2f2b78;backdrop-filter:blur(6px);box-shadow:0 0 18px rgba(124,92,255,.2)}
+.mcard{border:2px solid #2f2b78}
+.env{background:#1a1745;box-shadow:0 0 0 3px #3d3a85}
+.go{background:#2a2765}
+.tform .note{background:rgba(16,185,129,.15);border-color:#10b981;color:#6ee7b7}
+.free{background:rgba(16,185,129,.2);color:#6ee7b7}
+input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-color:#3d3a85}
+.alt{background:#1a1745;color:var(--ink)}
+.good{background:#064e3b;color:#a7f3d0}.bad{background:#7f1d1d;color:#fecaca}
+.meter i{background:#2a2765}
+#toast{background:#e9e6ff;color:#1a1840}
+.aright{background:linear-gradient(135deg,rgba(14,11,46,.94),rgba(32,18,84,.94));box-shadow:-6px 0 30px rgba(124,92,255,.3)}
+.aleft p{color:var(--muted)}.aleft .bar{border-left-color:#5ad7ff}
+.hero{background:radial-gradient(520px 200px at 50% 45%,rgba(124,92,255,.55) 0,transparent 70%),linear-gradient(135deg,#05040f,#150d45 60%,#0b2a6f);box-shadow:inset 0 0 60px rgba(90,215,255,.15);border:1px solid #2f2b78}
+.hero::before,.hero::after{background:linear-gradient(115deg,transparent 40%,rgba(90,215,255,.9) 41%,rgba(124,92,255,.7) 60%,transparent 61%);opacity:.55}
+.hero h1{background:linear-gradient(90deg,#5ad7ff,#b79cff);-webkit-background-clip:text;background-clip:text;color:transparent;filter:drop-shadow(0 0 16px rgba(124,92,255,.9))}
+.hero p{color:#c9c6ff}
+.tile,.cgrid .c{background:linear-gradient(135deg,#0a0828,#2a1a7a);border:1px solid #3d3a85;box-shadow:0 0 18px rgba(124,92,255,.25)}
+.tile svg,.tile em{color:#5ad7ff}
+.thumb{background:radial-gradient(circle at 50% 60%,rgba(124,92,255,.5),transparent 65%),linear-gradient(135deg,#0a0828,#1d1560)}
+.pr b{color:#5ad7ff}
+</style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute"><defs>
+<symbol id="s-user" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/></symbol>
+<symbol id="s-mail" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="s-lock" viewBox="0 0 24 24"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></symbol>
+<symbol id="s-ok" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12 3 3 5-6"/></symbol>
+<symbol id="s-eye" viewBox="0 0 24 24"><path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12Z"/><circle cx="12" cy="12" r="3"/></symbol>
+<symbol id="s-home" viewBox="0 0 24 24"><path d="m3 11 9-8 9 8v10H3z"/></symbol>
+<symbol id="s-box" viewBox="0 0 24 24"><path d="m3 7 9-4 9 4v10l-9 4-9-4zM3 7l9 4 9-4M12 11v10"/></symbol>
+<symbol id="s-coin" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M14.5 9c-.5-1-1.5-1.5-2.5-1.5-1.5 0-2.5.8-2.5 2s1 1.6 2.5 2 2.5.8 2.5 2-1 2-2.5 2c-1 0-2-.5-2.5-1.5M12 6v1.5M12 16.5V18"/></symbol>
+<symbol id="s-msg" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></symbol>
+<symbol id="s-grid" viewBox="0 0 24 24"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></symbol>
+<symbol id="s-hammer" viewBox="0 0 24 24"><path d="m14 4 6 6-3 3-6-6zM11 7 4 14l3 3 7-7M3 21h8"/></symbol>
+<symbol id="s-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></symbol>
+</defs></svg>
+
+<nav>
+  <div class="logo" data-go="home">City Hub</div>
+  <div class="links">
+    <a data-go="home"><svg class="i"><use href="#s-home"/></svg>หน้าหลัก</a>
+    <a data-scroll="products"><svg class="i"><use href="#s-box"/></svg>สินค้าทั้งหมด</a>
+    <a data-go="topup"><svg class="i"><use href="#s-coin"/></svg>เติมเงิน</a>
+    <a data-scroll="contact"><svg class="i"><use href="#s-msg"/></svg>ติดต่อ</a>
+    <a data-scroll="cats"><svg class="i"><use href="#s-grid"/></svg>หมวดหมู่ทั้งหมด</a>
+    <a data-msg="ระบบประมูลยังไม่เปิดใช้งาน"><svg class="i"><use href="#s-hammer"/></svg>ประมูล</a>
+  </div>
+  <label class="sbox"><svg class="i"><use href="#s-search"/></svg><input id="q" type="search" placeholder="ค้นหาสินค้า" aria-label="ค้นหาสินค้า"></label>
+  <button class="btn pri" id="adminBtn" data-go="admin" hidden>จัดการร้าน</button> <span id="guest"><button class="btn" data-go="login">เข้าสู่ระบบ</button> <button class="btn" data-go="signup">สมัครสมาชิก</button></span>
+  <span id="member" hidden><span class="chip"><i class="coin">$</i><b id="bal">0</b></span> <span class="chip"><svg class="i"><use href="#s-user"/></svg><b id="who"></b></span> <button class="btn" id="out">ออกจากระบบ</button></span>
+</nav>
+<!-- HOME -->
+<div class="page on" id="p-home">
+<main>
+  <section class="hero"><h1>CITY HUB</h1><p>PREMIUM SCRIPTS</p></section>
+  <section class="tiles">
+    <a class="tile" data-scroll="products"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="18.5" r="1" fill="#dff0ff"/></svg><div><b>สคริปต์ที่แนะนำ</b><em>กดเลย!!</em></div></a>
+    <a class="tile" data-scroll="products"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h3l3 12h11l2-8H7" stroke="currentColor" fill="none" stroke-width="2"/><circle cx="9" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg><div><b>สินค้าทั้งหมด</b><em>กดเลย!!</em></div></a>
+    <a class="tile" data-scroll="howto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.5 5-2 9-2V4c-4 0-7 .5-9 2zM12 6v14"/><path d="M16 9v5M16 7v.5" stroke-linecap="round"/></svg><div><b>วิธีการสั่งซื้อ</b><em>กดเลย!!</em></div></a>
+    <a class="tile" data-scroll="contact"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.5 1a14 14 0 0 0-5 0L9 4a16 16 0 0 0-4 1C2 9 2 14 2.5 18a16 16 0 0 0 5 2.5l1-1.700a10 10 0 0 1-1.700-.8l.4-.3a11 11 0 0 0 9.600 0l.4.300a10 10 0 0 1-1.700.800l1 1.700a16 16 0 0 0 5-2.500C22 13 21 9 19 5zM9 15c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg><div><b>DISCORD</b><em>กดเลย!!</em></div></a>
+  </section>
+  <h2 class="sec" id="cats"><svg class="i"><use href="#s-grid"/></svg>หมวดหมู่</h2>
+  <div class="cgrid" id="cgrid"></div>
+  <div class="pgrid" id="products"></div>
+  <h2 class="sec" id="howto">วิธีการสั่งซื้อ</h2>
+  <div class="panel">สมัครสมาชิก → เติมเงิน → เลือกสินค้า → กดซื้อ แล้วรับสินค้าในหน้าประวัติการสั่งซื้อทันที</div>
+</main>
+<footer id="contact">© 2026 City Hub · ติดต่อทาง Discord หรือ support@example.com</footer>
+</div>
+
+<!-- ADMIN -->
+<div class="page" id="p-admin"><main>
+  <h2 class="sec">จัดการร้าน (แอดมิน)</h2>
+  <form class="tform" id="fa" style="max-width:none" novalidate>
+    <input type="hidden" id="aid"><input type="hidden" id="at">
+    <div class="agrid">
+      <div class="w2"><label class="l" for="an">ชื่อสินค้า</label><input class="t" id="an" maxlength="60"></div>
+      <div><label class="l" for="ac">หมวดหมู่</label><input class="t" id="ac" list="cl" maxlength="30"><datalist id="cl"></datalist></div>
+      <div><label class="l" for="ai">ไอคอน (อีโมจิ)</label><input class="t" id="ai" maxlength="4" placeholder="📦"></div>
+      <div><label class="l" for="ap">ราคา (บาท)</label><input class="t" id="ap" type="number" min="0" step="1"></div>
+      <div><label class="l" for="ao">ราคาเดิม (ถ้าลดราคา)</label><input class="t" id="ao" type="number" min="0" step="1"></div>
+      <div><label class="l" for="ab">ป้าย (เช่น ขายดี, ใหม่, ลด 20%)</label><input class="t" id="ab" maxlength="14"></div>
+      <div><label class="l" for="abc">สีป้าย</label><select id="abc"><option value="red">แดง</option><option value="orange">ส้ม</option><option value="green">เขียว</option><option value="blue">น้ำเงิน</option><option value="purple">ม่วง</option></select></div>
+      <div class="w4"><label class="l" for="ad">คำอธิบาย</label><input class="t" id="ad" maxlength="120"></div>
+      <div class="w2"><label class="chk"><input type="checkbox" id="ah"><span>ซ่อนสินค้านี้จากหน้าร้าน</span></label></div>
+    </div>
+    <div style="display:flex;gap:10px;margin-top:8px"><button class="submit" style="width:auto;padding:14px 30px" type="submit" id="asave">เพิ่มสินค้า</button><button class="btn" type="button" id="areset">ล้างฟอร์ม</button></div>
+  </form>
+  <div class="panel" id="seedbox" hidden>ฐานข้อมูลยังว่าง หน้าร้านกำลังแสดงสินค้าตัวอย่าง <button class="btn pri" id="seed" type="button">นำเข้าสินค้าตัวอย่างไปแก้ไข</button></div>
+  <div id="alist"></div>
+</main></div>
+
+<!-- TOPUP -->
+<div class="page" id="p-topup"><main>
+  <div class="warn"><span>⚠️</span><div><b>เงื่อนไขการเติมเงิน</b>หลังจากเติมเงินไม่มีการคืนเงินและรับผิดชอบใดๆทั้งสิ้น ตรวจสอบจำนวนเงินและการเติมเงินให้ดี</div></div>
+  <div class="tt"><h1>เติมเงิน</h1><p>เลือกช่องทางการชำระเงิน</p></div>
+  <div class="methods"><div class="mcard" id="mc" tabindex="0" role="button"><div class="top"><div class="env">🧧</div><div class="go">›</div></div><h3>ซองอั่งเปา (TrueMoney)</h3><p>เติมเงินผ่านซองของขวัญ TrueMoney Wallet</p><span class="free">ฟรีค่าธรรมเนียม</span></div></div>
+  <form class="tform" id="ft" hidden novalidate>
+    <label class="l" for="tl">ลิงก์อั่งเปา</label>
+    <input class="t" id="tl" style="padding:14px 16px" placeholder="https://gift.truemoney.com/campaign/?v=XXXXXXXXXXXXXXXXXX" autocomplete="off">
+    <div class="msg" id="mtl"></div>
+    <div class="note">ไม่มีค่าธรรมเนียม!</div>
+    <button class="submit green" id="tgo" type="submit">เติมเงิน</button>
+    <div class="status" id="tst" role="status"></div>
+  </form>
+</main></div>
+
+<!-- SIGNUP -->
+<div class="page" id="p-signup"><div class="auth">
+  <section class="aleft"><div class="bar"><h1>City Hub Sign Up</h1><p>สมัครสมาชิกเพื่อเริ่มซื้อสินค้าได้เลย</p></div></section>
+  <section class="aright"><form id="fs" novalidate>
+    <h2>สร้างบัญชีใหม่</h2>
+    <div class="f"><label class="l" for="su">ชื่อผู้ใช้</label><div class="in"><svg class="i"><use href="#s-user"/></svg><input class="t" id="su" maxlength="13" placeholder="ชื่อผู้ใช้ 4-13 ตัวอักษร" autocomplete="username"></div><div class="msg" id="msu"></div></div>
+    <div class="f"><label class="l" for="se">อีเมล</label><div class="in"><svg class="i"><use href="#s-mail"/></svg><input class="t" id="se" type="email" placeholder="example@email.com" autocomplete="email"></div><div class="msg" id="mse"></div></div>
+    <div class="f"><label class="l" for="sp">รหัสผ่าน</label><div class="in"><svg class="i"><use href="#s-lock"/></svg><input class="t" id="sp" type="password" placeholder="อย่างน้อย 8 ตัว มีตัวอักษรและตัวเลข" autocomplete="new-password"><button type="button" class="eye" data-eye="sp" aria-label="แสดงรหัสผ่าน"><svg class="i"><use href="#s-eye"/></svg></button></div><div class="meter" id="meter" data-s="0"><i></i><i></i><i></i><i></i></div><div class="msg" id="msp"></div></div>
+    <div class="f"><label class="l" for="sc">ยืนยันรหัสผ่าน</label><div class="in"><svg class="i"><use href="#s-ok"/></svg><input class="t" id="sc" type="password" placeholder="กรอกรหัสผ่านอีกครั้ง" autocomplete="new-password"><button type="button" class="eye" data-eye="sc" aria-label="แสดงรหัสผ่าน"><svg class="i"><use href="#s-eye"/></svg></button></div><div class="msg" id="msc"></div></div>
+    <input class="hp" id="hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <label class="chk"><input type="checkbox" id="st"><span>ฉันยอมรับข้อตกลงการใช้งานและนโยบายความเป็นส่วนตัว</span></label>
+    <button class="submit" id="sgo" type="submit" disabled>สร้างบัญชี</button>
+    <div class="status" id="sst" role="status"></div>
+    <div class="or">หรือ</div>
+    <a class="alt" data-go="login">มีบัญชีอยู่แล้ว? เข้าสู่ระบบ</a>
+    <a class="alt" data-go="home" style="margin-top:10px">กลับหน้าหลัก</a>
+  </form></section>
+</div></div>
+
+<!-- LOGIN -->
+<div class="page" id="p-login"><div class="auth">
+  <section class="aleft"><div class="bar"><h1>City Hub Login</h1><p>เข้าสู่ระบบเพื่อซื้อสินค้า</p></div></section>
+  <section class="aright"><form id="fl" novalidate>
+    <h2>เข้าสู่ระบบ</h2>
+    <div class="f"><label class="l" for="lu">ชื่อผู้ใช้หรืออีเมล</label><div class="in"><svg class="i"><use href="#s-user"/></svg><input class="t" id="lu" placeholder="ชื่อผู้ใช้หรืออีเมล" autocomplete="username"></div></div>
+    <div class="f"><label class="l" for="lp">รหัสผ่าน</label><div class="in"><svg class="i"><use href="#s-lock"/></svg><input class="t" id="lp" type="password" placeholder="รหัสผ่าน" autocomplete="current-password"><button type="button" class="eye" data-eye="lp" aria-label="แสดงรหัสผ่าน"><svg class="i"><use href="#s-eye"/></svg></button></div></div>
+    <button class="submit" id="lgo" type="submit">เข้าสู่ระบบ</button>
+    <div class="status" id="lst" role="status"></div>
+    <div class="or">หรือ</div>
+    <a class="alt" data-go="signup">ยังไม่มีบัญชี? สมัครสมาชิก</a>
+    <a class="alt" data-go="home" style="margin-top:10px">กลับหน้าหลัก</a>
+  </form></section>
+</div></div>
+<div id="toast" role="status"></div>
+
+<script>
+// ใส่ URL API จริงของคุณ (POST JSON) เพื่อใช้งานจริง; ว่าง = โหมดทดสอบเก็บบัญชีในเบราว์เซอร์นี้เท่านั้น
+const SIGNUP_ENDPOINT="", LOGIN_ENDPOINT="";
+const $=id=>document.getElementById(id);
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),2400)}
+/* router */
+function go(p){if(p==="admin"&&!isAdmin){toast("เฉพาะแอดมินเท่านั้น");return}["home","signup","login","topup","admin"].forEach(n=>$("p-"+n).classList.toggle("on",n===p));document.body.classList.toggle("authpg",p==="signup"||p==="login");window.scrollTo(0,0);try{location.hash=p==="home"?"":p}catch(e){}}
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-go]");if(g){e.preventDefault();go(g.dataset.go);return}
+  const s=e.target.closest("[data-scroll]");if(s){if(!$("p-home").classList.contains("on"))go("home");$(s.dataset.scroll).scrollIntoView({behavior:"smooth"});return}
+  const m=e.target.closest("[data-msg]");if(m){toast(m.dataset.msg);return}
+  const ey=e.target.closest("[data-eye]");if(ey){const i=$(ey.dataset.eye);i.type=i.type==="password"?"text":"password";return}
+  const c=e.target.closest(".c");if(c){cur=c.dataset.c===cur?"ทั้งหมด":c.dataset.c;render()}
+  const b=e.target.closest(".buy");if(b)toast(session()?"เพิ่ม “"+b.dataset.n+"” แล้ว (ตัวอย่าง)":"กรุณาเข้าสู่ระบบก่อนซื้อสินค้า");
+});
+/* products */
+const DEF=[{n:"สคริปต์ A (รายวัน)",c:"สคริปต์",p:49,i:"⚡",d:"ใช้งานได้ 1 วัน อัปเดตสม่ำเสมอ",b:"ใหม่",bc:"blue"},{n:"สคริปต์ A (รายเดือน)",c:"สคริปต์",p:299,old:399,i:"🚀",d:"ใช้งานได้ 30 วัน คุ้มกว่า",b:"ลด 25%",bc:"red"},{n:"ชุดเครื่องมือ B",c:"เครื่องมือ",p:149,i:"🛠️",d:"รวมเครื่องมือช่วยหลายอย่าง",b:"",bc:"blue"},{n:"แพ็กเกจ VIP",c:"แพ็กเกจ",p:599,i:"👑",d:"ปลดล็อกทุกสคริปต์ + ซัพพอร์ตก่อนใคร",b:"ขายดี",bc:"orange"},{n:"ตัวช่วยฟาร์มอัตโนมัติ",c:"สคริปต์",p:199,i:"🤖",d:"ทำงานเบื้องหลัง ประหยัดเวลา",b:"",bc:"blue"},{n:"บริการติดตั้งให้",c:"เครื่องมือ",p:99,i:"🧩",d:"ทีมงานช่วยตั้งค่าให้",b:"",bc:"blue"}].map((x,k)=>({...x,id:"d"+k,t:k+1}));
+let P=DEF,isAdmin=false,DB=null,usingDb=false,cur="ทั้งหมด";
+const COL={red:"#dc2626",orange:"#f59e0b",green:"#10b981",blue:"#2563eb",purple:"#7c3aed"};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+function render(){
+  const V=P.filter(x=>!x.hide),cats=[...new Set(V.map(x=>x.c))];
+  if(cur!=="ทั้งหมด"&&!cats.includes(cur))cur="ทั้งหมด";
+  $("cgrid").innerHTML=cats.map(n=>`<div class="c ${n===cur?"on":""}" data-c="${esc(n)}"><span>${esc(V.find(x=>x.c===n).i)}</span>${esc(n)}</div>`).join("");
+  const q=$("q").value.trim().toLowerCase();
+  const L=V.filter(x=>(cur==="ทั้งหมด"||x.c===cur)&&(x.n+x.d).toLowerCase().includes(q));
+  $("products").innerHTML=L.length?L.map(x=>`<article class="card"><div class="thumb">${esc(x.i)}${x.b?`<span class="badge" style="background:${COL[x.bc]||COL.blue}">${esc(x.b)}</span>`:""}</div><div class="b"><h3>${esc(x.n)}</h3><p>${esc(x.d)}</p><div class="pr"><span><b>฿${esc(x.p)}</b>${x.old?`<span class="old">฿${esc(x.old)}</span>`:""}</span><button class="btn pri buy" data-n="${esc(x.n)}">ซื้อเลย</button></div></div></article>`).join(""):'<div class="panel">ไม่พบสินค้า ลองเปลี่ยนคำค้นหา</div>';
+  if(isAdmin)renderAdmin();
+}
+function renderAdmin(){
+  $("seedbox").hidden=usingDb;
+  $("cl").innerHTML=[...new Set(P.map(x=>x.c))].map(c=>`<option value="${esc(c)}">`).join("");
+  $("alist").innerHTML=P.map(x=>`<div class="arow ${x.hide?"off":""}"><span class="ic">${esc(x.i)}</span><div class="nm"><b>${esc(x.n)}</b> ${x.b?`<span class="badge" style="position:static;background:${COL[x.bc]||COL.blue}">${esc(x.b)}</span>`:""}<br><small>${esc(x.c)} · ฿${esc(x.p)}${x.old?" (เดิม ฿"+esc(x.old)+")":""}${x.hide?" · ซ่อนอยู่":""}</small></div><button class="btn" data-ae="${esc(x.id)}">แก้ไข</button><button class="btn" data-ah="${esc(x.id)}">${x.hide?"แสดง":"ซ่อน"}</button><button class="btn red" data-ad="${esc(x.id)}">ลบ</button></div>`).join("");
+}
+$("q").addEventListener("input",render);render();
+function resetForm(){$("fa").reset();$("aid").value="";$("at").value="";$("asave").textContent="เพิ่มสินค้า"}
+async function put(o){try{await DB.collection("products").doc(o.id).set(o);return true}catch(e){toast("บันทึกไม่ได้: "+(e.message||e.code||""));return false}}
+$("fa").addEventListener("submit",async e=>{e.preventDefault();
+  const n=$("an").value.trim(),pv=$("ap").value;if(!n||pv===""||Number(pv)<0){toast("กรุณากรอกชื่อและราคา");return}
+  const id=$("aid").value||"p"+Date.now().toString(36);
+  const o={id,n,c:$("ac").value.trim()||"ทั่วไป",p:Number(pv),old:$("ao").value===""?null:Number($("ao").value),i:$("ai").value.trim()||"📦",d:$("ad").value.trim(),b:$("ab").value.trim(),bc:$("abc").value,hide:$("ah").checked,t:Number($("at").value)||Date.now()};
+  if(await put(o)){toast("บันทึกแล้ว");resetForm()}});
+$("areset").onclick=resetForm;
+$("seed").onclick=async()=>{for(const x of DEF)if(!(await put(x)))return;toast("นำเข้าแล้ว")};
+$("alist").addEventListener("click",async e=>{
+  const ed=e.target.closest("[data-ae]"),hd=e.target.closest("[data-ah]"),dl=e.target.closest("[data-ad]");
+  if(ed){const x=P.find(p=>p.id===ed.dataset.ae);if(!x)return;$("aid").value=x.id;$("at").value=x.t||"";$("an").value=x.n;$("ac").value=x.c;$("ai").value=x.i;$("ap").value=x.p;$("ao").value=x.old??"";$("ab").value=x.b||"";$("abc").value=x.bc||"blue";$("ad").value=x.d||"";$("ah").checked=!!x.hide;$("asave").textContent="บันทึกการแก้ไข";$("fa").scrollIntoView({behavior:"smooth"})}
+  if(hd&&usingDb){const x=P.find(p=>p.id===hd.dataset.ah);if(x)await put({...x,hide:!x.hide})}
+  else if(hd)toast("กด “นำเข้าสินค้าตัวอย่าง” ก่อน");
+  if(dl&&usingDb){if(dl.dataset.sure){try{await DB.collection("products").doc(dl.dataset.ad).delete();toast("ลบแล้ว")}catch(er){toast("ลบไม่ได้")}}else{dl.dataset.sure=1;dl.textContent="ยืนยันลบ";setTimeout(()=>{dl.dataset.sure="";dl.textContent="ลบ"},3000)}}
+  else if(dl)toast("กด “นำเข้าสินค้าตัวอย่าง” ก่อน");
+});
+/* shared product database: ใช้ได้เมื่อเปิดผ่าน claude.ai; แอดมิน = เจ้าของ/ผู้แก้ไขหน้านี้ */
+(async()=>{try{
+  if(!window.claude||!claude.use)return;
+  DB=await claude.use("db");const U=await claude.use("user");if(!DB)return;
+  isAdmin=!!(U&&await U.canEdit());$("adminBtn").hidden=!isAdmin;
+  DB.collection("products").onSnapshot(sn=>{
+    if(sn.docs.length){P=sn.docs.map(d=>({...d.data(),id:d.id})).sort((a,b)=>(a.t||0)-(b.t||0));usingDb=true}else{P=DEF;usingDb=false}
+    render()},()=>{});
+}catch(e){}})();
+/* demo account store (browser only) */
+const LS={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(e){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v));return true}catch(e){return false}}};
+const session=()=>LS.get("nh_session");
+async function hash(pw,salt){const k=await crypto.subtle.importKey("raw",new TextEncoder().encode(pw),"PBKDF2",false,["deriveBits"]);const b=await crypto.subtle.deriveBits({name:"PBKDF2",salt:Uint8Array.from(atob(salt),c=>c.charCodeAt(0)),iterations:150000,hash:"SHA-256"},k,256);return btoa(String.fromCharCode(...new Uint8Array(b)))}
+function paint(){const s=session();$("guest").hidden=!!s;$("member").hidden=!s;if(s){$("who").textContent=s.u;$("bal").textContent=s.bal||0}}
+$("out").onclick=()=>{LS.set("nh_session",null);paint();toast("ออกจากระบบแล้ว")};
+function show(el,t,x){el.className="status show "+t;el.textContent=x}
+/* signup validation */
+const R={
+ su:v=>!v?"กรุณากรอกชื่อผู้ใช้":(v.length<4||v.length>13)?"ต้องมี 4-13 ตัวอักษร":!/^[A-Za-z0-9_]+$/.test(v)?"ใช้ได้เฉพาะ a-z, 0-9 และ _":"",
+ se:v=>!v?"กรุณากรอกอีเมล":!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(v)?"รูปแบบอีเมลไม่ถูกต้อง":"",
+ sp:v=>!v?"กรุณากรอกรหัสผ่าน":v.length<8?"ต้องมีอย่างน้อย 8 ตัวอักษร":(!/[A-Za-z]/.test(v)||!/\d/.test(v))?"ต้องมีทั้งตัวอักษรและตัวเลข":v.toLowerCase()===$("su").value.trim().toLowerCase()?"รหัสผ่านต้องไม่เหมือนชื่อผู้ใช้":"",
+ sc:v=>!v?"กรุณายืนยันรหัสผ่าน":v!==$("sp").value?"รหัสผ่านไม่ตรงกัน":""};
+const val=k=>(k==="sp"||k==="sc")?$(k).value:$(k).value.trim();
+const touched={};
+function chk(k,force){const err=R[k](val(k));if(force||touched[k]){const m=$("m"+k);m.textContent=err||"✓ ถูกต้อง";m.className="msg"+(err?"":" ok");$(k).setAttribute("aria-invalid",err?"true":"false")}return !err}
+const okAll=()=>Object.keys(R).every(k=>!R[k](val(k)))&&$("st").checked;
+const refresh=()=>{$("sgo").disabled=!okAll()};
+Object.keys(R).forEach(k=>{$(k).addEventListener("blur",()=>{touched[k]=true;chk(k)});$(k).addEventListener("input",()=>{chk(k);if(k==="sp"){const v=$("sp").value;let s=0;if(v.length>=8)s++;if(/[A-Za-z]/.test(v)&&/\d/.test(v))s++;if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++;if(/[^A-Za-z0-9]/.test(v)||v.length>=12)s++;$("meter").dataset.s=v?s:0;if($("sc").value)chk("sc")}refresh()})});
+$("st").onchange=refresh;
+let lastT=0;
+$("fs").addEventListener("submit",async e=>{
+  e.preventDefault();Object.keys(R).forEach(k=>{touched[k]=true;chk(k,true)});
+  if(!okAll()||$("hp").value||Date.now()-lastT<3000)return;lastT=Date.now();
+  const btn=$("sgo"),st=$("sst");btn.disabled=true;btn.textContent="กำลังสร้างบัญชี...";
+  const body={username:val("su"),email:val("se").toLowerCase(),password:val("sp")};
+  try{
+    if(SIGNUP_ENDPOINT){
+      const r=await fetch(SIGNUP_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)});const d=await r.json().catch(()=>({}));
+      if(r.ok){show(st,"good","สมัครสมาชิกสำเร็จ!");setTimeout(()=>go("login"),1200)}else show(st,"bad",r.status===409?"ชื่อผู้ใช้หรืออีเมลนี้ถูกใช้แล้ว":(d.message||"สมัครไม่สำเร็จ ลองใหม่อีกครั้ง"));
+    }else{
+      const users=LS.get("nh_users")||{};
+      if(users[body.username.toLowerCase()]||Object.values(users).some(u=>u.e===body.email)){show(st,"bad","ชื่อผู้ใช้หรืออีเมลนี้ถูกใช้แล้ว")}
+      else{const salt=btoa(String.fromCharCode(...crypto.getRandomValues(new Uint8Array(16))));
+        users[body.username.toLowerCase()]={u:body.username,e:body.email,salt,h:await hash(body.password,salt)};
+        if(LS.set("nh_users",users)){show(st,"good","สมัครสมาชิกสำเร็จ! (โหมดทดสอบ: บัญชีเก็บในเบราว์เซอร์นี้เท่านั้น) กำลังไปหน้าเข้าสู่ระบบ...");$("fs").reset();$("meter").dataset.s=0;setTimeout(()=>{st.className="status";go("login")},1800)}
+        else show(st,"bad","เบราว์เซอร์นี้ไม่อนุญาตให้บันทึกข้อมูล")}
+    }
+  }catch(_){show(st,"bad","เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง")}
+  btn.textContent="สร้างบัญชี";refresh();
+});
+/* login */
+let tries=0,lockUntil=0;
+$("fl").addEventListener("submit",async e=>{
+  e.preventDefault();const st=$("lst"),id=$("lu").value.trim().toLowerCase(),pw=$("lp").value;
+  if(!id||!pw)return show(st,"bad","กรุณากรอกชื่อผู้ใช้และรหัสผ่าน");
+  if(Date.now()<lockUntil)return show(st,"bad","ลองผิดหลายครั้ง กรุณารอสักครู่แล้วลองใหม่");
+  try{
+    if(LOGIN_ENDPOINT){const r=await fetch(LOGIN_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({id,password:pw})});if(!r.ok)throw 0;const d=await r.json();LS.set("nh_session",{u:d.username||id})}
+    else{const users=LS.get("nh_users")||{};const u=users[id]||Object.values(users).find(x=>x.e===id);
+      if(!u||await hash(pw,u.salt)!==u.h)throw 0;LS.set("nh_session",{u:u.u})}
+    tries=0;st.className="status";$("fl").reset();paint();go("home");toast("เข้าสู่ระบบสำเร็จ")
+  }catch(_){if(++tries>=5){lockUntil=Date.now()+30000;tries=0}show(st,"bad","ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง")}
+});
+paint();
+const h=(location.hash||"").slice(1);if(["signup","login","topup"].includes(h))go(h);
+/* TrueMoney angpao top-up: ต้องมีเซิร์ฟเวอร์ (ดู server.js) ใส่ URL ที่นี่ เช่น "https://your-domain.com/api/topup" */
+const TOPUP_ENDPOINT="";
+const ANGPAO=/^https:\/\/gift\.truemoney\.com\/campaign\/\?v=[0-9A-Za-z]{18,}$/;
+$("mc").onclick=()=>{$("ft").hidden=false;$("mc").classList.add("on");$("tl").focus()};
+$("mc").onkeydown=e=>{if(e.key==="Enter"||e.key===" ")$("mc").click()};
+$("ft").addEventListener("submit",async e=>{
+  e.preventDefault();const st=$("tst"),link=$("tl").value.trim(),m=$("mtl");
+  if(!session()){show(st,"bad","กรุณาเข้าสู่ระบบก่อนเติมเงิน");return}
+  if(!ANGPAO.test(link)){m.textContent="ลิงก์ไม่ถูกต้อง ต้องเป็นรูปแบบ https://gift.truemoney.com/campaign/?v=...";return}
+  m.textContent="";
+  if(!TOPUP_ENDPOINT){show(st,"bad","ยังไม่ได้เชื่อมต่อ TrueMoney: ต้องติดตั้ง server.js และใส่ URL ใน TOPUP_ENDPOINT ก่อน ระบบจึงจะเติมเงินจริง");return}
+  const b=$("tgo");b.disabled=true;b.textContent="กำลังตรวจสอบ...";
+  try{
+    const r=await fetch(TOPUP_ENDPOINT,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify({link,username:session().u})});
+    const d=await r.json().catch(()=>({}));
+    if(r.ok&&d.ok){const s=session();s.bal=d.balance;LS.set("nh_session",s);paint();$("tl").value="";show(st,"good","เติมเงินสำเร็จ +"+d.amount+" บาท")}
+    else show(st,"bad",d.message||"เติมเงินไม่สำเร็จ")
+  }catch(_){show(st,"bad","เชื่อมต่อเซิร์ฟเวอร์ไม่ได้")}
+  b.disabled=false;b.textContent="เติมเงิน"});
+</script>
+</body>
+</html>
