@@ -420,6 +420,7 @@ paint();
 (async()=>{if(!API)return;const s=session();if(s&&s.tok){try{const r=await fetch(API+"/api/me",{headers:authH()});if(r.status===401)LS.set("nh_session",null);else if(r.ok){const d=await r.json();LS.set("nh_session",{u:d.username,tok:s.tok,bal:d.balance,role:d.role})}}catch(e){}}paint();loadProducts()})();
 const h=(location.hash||"").slice(1);if(["signup","login","topup","contact"].includes(h))go(h);
 /* TrueMoney angpao top-up: ต้องมีเซิร์ฟเวอร์ (ดู server.js) ใส่ URL ที่นี่ เช่น "https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/apl" */
+const API = "https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/api";
 const TOPUP_ENDPOINT=API&&API+"/api/topup";
 const ANGPAO=/^https:\/\/gift\.truemoney\.com\/campaign\/\?v=[0-9A-Za-z]{18,}$/;
 $("mc").onclick=()=>{$("ft").hidden=false;$("mc").classList.add("on");$("tl").focus()};s
