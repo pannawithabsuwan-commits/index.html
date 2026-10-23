@@ -163,7 +163,7 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 </defs></svg>
 
 <nav>
-  <div class="logo" data-go="home">City Hub</div>
+  <div class="logo" data-go="home"><span class="sn">City Hub</span></div>
   <div class="links">
     <a data-go="home"><svg class="i"><use href="#s-home"/></svg>หน้าหลัก</a>
     <a data-scroll="products"><svg class="i"><use href="#s-box"/></svg>สินค้าทั้งหมด</a>
@@ -179,12 +179,13 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 <!-- HOME -->
 <div class="page on" id="p-home">
 <main>
-  <section class="hero"><h1>CITY HUB</h1><p>PREMIUM SCRIPTS</p></section>
+  <div class="panel" id="ann" hidden style="text-align:center;color:var(--ink);margin:0 0 12px"></div>
+  <section class="hero"><h1 class="snu">CITY HUB</h1><p>PREMIUM SCRIPTS</p></section>
   <section class="tiles">
     <a class="tile" data-scroll="products"><svg viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="2" width="12" height="20" rx="3"/><circle cx="12" cy="18.5" r="1" fill="#dff0ff"/></svg><div><b>สคริปต์ที่แนะนำ</b><em>กดเลย!!</em></div></a>
     <a class="tile" data-scroll="products"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M2 3h3l3 12h11l2-8H7" stroke="currentColor" fill="none" stroke-width="2"/><circle cx="9" cy="20" r="2"/><circle cx="18" cy="20" r="2"/></svg><div><b>สินค้าทั้งหมด</b><em>กดเลย!!</em></div></a>
     <a class="tile" data-scroll="howto"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 6c-2-1.5-5-2-9-2v14c4 0 7 .5 9 2 2-1.5 5-2 9-2V4c-4 0-7 .5-9 2zM12 6v14"/><path d="M16 9v5M16 7v.5" stroke-linecap="round"/></svg><div><b>วิธีการสั่งซื้อ</b><em>กดเลย!!</em></div></a>
-    <a class="tile" href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.5 1a14 14 0 0 0-5 0L9 4a16 16 0 0 0-4 1C2 9 2 14 2.5 18a16 16 0 0 0 5 2.5l1-1.700a10 10 0 0 1-1.700-.8l.4-.3a11 11 0 0 0 9.600 0l.4.300a10 10 0 0 1-1.700.800l1 1.700a16 16 0 0 0 5-2.500C22 13 21 9 19 5zM9 15c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg><div><b>DISCORD</b><em>กดเลย!!</em></div></a>
+    <a class="tile" data-dc href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.5 1a14 14 0 0 0-5 0L9 4a16 16 0 0 0-4 1C2 9 2 14 2.5 18a16 16 0 0 0 5 2.5l1-1.700a10 10 0 0 1-1.700-.8l.4-.3a11 11 0 0 0 9.600 0l.4.300a10 10 0 0 1-1.700.800l1 1.700a16 16 0 0 0 5-2.500C22 13 21 9 19 5zM9 15c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg><div><b>DISCORD</b><em>กดเลย!!</em></div></a>
   </section>
   <h2 class="sec" id="cats"><svg class="i"><use href="#s-grid"/></svg>หมวดหมู่</h2>
   <div class="cgrid" id="cgrid"></div>
@@ -192,12 +193,22 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
   <h2 class="sec" id="howto">วิธีการสั่งซื้อ</h2>
   <div class="panel">สมัครสมาชิก → เติมเงิน → เลือกสินค้า → กดซื้อ แล้วรับสินค้าในหน้าประวัติการสั่งซื้อทันที</div>
 </main>
-<footer id="contact">© 2026 City Hub · ติดต่อทาง <a href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer" style="color:var(--cy)">Discord</a> หรือ support@example.com</footer>
+<footer id="contact">© 2026 <span class="sn">City Hub</span> · ติดต่อทาง <a data-dc href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer" style="color:var(--cy)">Discord</a> หรือ support@example.com <span style="opacity:.5">· เวอร์ชัน v4 (23 ต.ค. 2026)</span></footer>
 </div>
 
 <!-- ADMIN -->
 <div class="page" id="p-admin"><main>
   <h2 class="sec">จัดการร้าน (แอดมิน)</h2>
+  <form class="tform" id="fset" style="max-width:none;margin-top:0;margin-bottom:16px" novalidate hidden>
+    <b style="font-size:18px">ตั้งค่าร้าน</b>
+    <div class="agrid" style="margin-top:10px">
+      <div class="w2"><label class="l" for="ssn">ชื่อร้าน</label><input class="t" id="ssn" maxlength="30"></div>
+      <div class="w2"><label class="l" for="ssg">สโลแกนใต้ชื่อ (แบนเนอร์)</label><input class="t" id="ssg" maxlength="40"></div>
+      <div class="w4"><label class="l" for="ssd">ลิงก์ Discord (เว้นว่าง = ซ่อนปุ่ม)</label><input class="t" id="ssd" maxlength="100" placeholder="https://discord.gg/xxxx"></div>
+      <div class="w4"><label class="l" for="ssa">ประกาศหน้าร้าน (เว้นว่าง = ไม่แสดง)</label><input class="t" id="ssa" maxlength="200"></div>
+    </div>
+    <button class="submit" style="width:auto;padding:12px 30px;margin-top:10px" type="submit">บันทึกการตั้งค่า</button>
+  </form>
   <form class="tform" id="fa" style="max-width:none" novalidate>
     <input type="hidden" id="aid"><input type="hidden" id="at">
     <div class="agrid">
@@ -221,7 +232,7 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 <div class="page" id="p-contact"><main style="max-width:600px">
   <h2 class="sec" style="font-size:26px;margin-top:50px">ช่องทางติดต่อ</h2>
   <div class="panel" style="padding:32px;border-radius:24px">
-    <a class="crow" href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer"><svg style="width:44px;height:44px;color:#5865f2" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.5 1a14 14 0 0 0-5 0L9 4a16 16 0 0 0-4 1C2 9 2 14 2.5 18a16 16 0 0 0 5 2.5l1-1.700a10 10 0 0 1-1.700-.8l.4-.3a11 11 0 0 0 9.600 0l.4.300a10 10 0 0 1-1.700.800l1 1.700a16 16 0 0 0 5-2.500C22 13 21 9 19 5zM9 15c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg><span>Discord</span></a>
+    <a class="crow" data-dc href="https://discord.gg/xUUrs6dT4" target="_blank" rel="noopener noreferrer"><svg style="width:44px;height:44px;color:#5865f2" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5a16 16 0 0 0-4-1l-.5 1a14 14 0 0 0-5 0L9 4a16 16 0 0 0-4 1C2 9 2 14 2.5 18a16 16 0 0 0 5 2.5l1-1.700a10 10 0 0 1-1.700-.8l.4-.3a11 11 0 0 0 9.600 0l.4.300a10 10 0 0 1-1.700.800l1 1.700a16 16 0 0 0 5-2.500C22 13 21 9 19 5zM9 15c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2zm6 0c-1 0-1.800-.9-1.800-2s.8-2 1.800-2 1.800.9 1.800 2-.8 2-1.800 2z"/></svg><span>Discord</span></a>
   </div>
 </main></div>
 
@@ -242,7 +253,7 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 
 <!-- SIGNUP -->
 <div class="page" id="p-signup"><div class="auth">
-  <section class="aleft"><div class="bar"><h1>City Hub Sign Up</h1><p>สมัครสมาชิกเพื่อเริ่มซื้อสินค้าได้เลย</p></div></section>
+  <section class="aleft"><div class="bar"><h1><span class="sn">City Hub</span> Sign Up</h1><p>สมัครสมาชิกเพื่อเริ่มซื้อสินค้าได้เลย</p></div></section>
   <section class="aright"><form id="fs" novalidate>
     <h2>สร้างบัญชีใหม่</h2>
     <div class="f"><label class="l" for="su">ชื่อผู้ใช้</label><div class="in"><svg class="i"><use href="#s-user"/></svg><input class="t" id="su" maxlength="13" placeholder="ชื่อผู้ใช้ 4-13 ตัวอักษร" autocomplete="username"></div><div class="msg" id="msu"></div></div>
@@ -261,7 +272,7 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 
 <!-- LOGIN -->
 <div class="page" id="p-login"><div class="auth">
-  <section class="aleft"><div class="bar"><h1>City Hub Login</h1><p>เข้าสู่ระบบเพื่อซื้อสินค้า</p></div></section>
+  <section class="aleft"><div class="bar"><h1><span class="sn">City Hub</span> Login</h1><p>เข้าสู่ระบบเพื่อซื้อสินค้า</p></div></section>
   <section class="aright"><form id="fl" novalidate>
     <h2>เข้าสู่ระบบ</h2>
     <div class="f"><label class="l" for="lu">ชื่อผู้ใช้หรืออีเมล</label><div class="in"><svg class="i"><use href="#s-user"/></svg><input class="t" id="lu" placeholder="ชื่อผู้ใช้หรืออีเมล" autocomplete="username"></div></div>
@@ -408,10 +419,10 @@ $("fl").addEventListener("submit",async e=>{
 paint();
 (async()=>{if(!API)return;const s=session();if(s&&s.tok){try{const r=await fetch(API+"/api/me",{headers:authH()});if(r.status===401)LS.set("nh_session",null);else if(r.ok){const d=await r.json();LS.set("nh_session",{u:d.username,tok:s.tok,bal:d.balance,role:d.role})}}catch(e){}}paint();loadProducts()})();
 const h=(location.hash||"").slice(1);if(["signup","login","topup","contact"].includes(h))go(h);
-/* TrueMoney angpao top-up: ต้องมีเซิร์ฟเวอร์ (ดู server.js) ใส่ URL ที่นี่ เช่น "https://your-domain.com/api/topup" */
+/* TrueMoney angpao top-up: ต้องมีเซิร์ฟเวอร์ (ดู server.js) ใส่ URL ที่นี่ เช่น "https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/apl" */
 const TOPUP_ENDPOINT=API&&API+"/api/topup";
 const ANGPAO=/^https:\/\/gift\.truemoney\.com\/campaign\/\?v=[0-9A-Za-z]{18,}$/;
-$("mc").onclick=()=>{$("ft").hidden=false;$("mc").classList.add("on");$("tl").focus()};
+$("mc").onclick=()=>{$("ft").hidden=false;$("mc").classList.add("on");$("tl").focus()};s
 $("mc").onkeydown=e=>{if(e.key==="Enter"||e.key===" ")$("mc").click()};
 $("ft").addEventListener("submit",async e=>{
   e.preventDefault();const st=$("tst"),link=$("tl").value.trim(),m=$("mtl");
@@ -427,6 +438,24 @@ $("ft").addEventListener("submit",async e=>{
     else{if(r.status===401){LS.set("nh_session",null);paint()}show(st,"bad",d.message||"เติมเงินไม่สำเร็จ")}
   }catch(_){show(st,"bad","เชื่อมต่อเซิร์ฟเวอร์ไม่ได้")}
   b.disabled=false;b.textContent="เติมเงิน"});
+/* ตั้งค่าร้าน (โหมดเซิร์ฟเวอร์) */
+let ST={shopName:"City Hub",tagline:"PREMIUM SCRIPTS",discordUrl:"https://discord.gg/xUUrs6dT4",announcement:""};
+function applySettings(){
+  document.querySelectorAll(".sn").forEach(e=>e.textContent=ST.shopName);
+  document.querySelectorAll(".snu").forEach(e=>e.textContent=ST.shopName.toUpperCase());
+  const hp=document.querySelector(".hero p");if(hp)hp.textContent=ST.tagline;
+  document.title=ST.shopName+" – "+ST.tagline;
+  document.querySelectorAll("a[data-dc]").forEach(a=>{if(ST.discordUrl){a.href=ST.discordUrl;a.hidden=false}else a.hidden=true});
+  $("ann").hidden=!ST.announcement;$("ann").textContent=ST.announcement;
+  $("ssn").value=ST.shopName;$("ssg").value=ST.tagline;$("ssd").value=ST.discordUrl;$("ssa").value=ST.announcement;
+}
+async function loadSettings(){if(!API)return;$("fset").hidden=false;try{const r=await fetch(API+"/api/settings");if(r.ok){ST=await r.json();applySettings()}}catch(e){}}
+$("fset").addEventListener("submit",async e=>{e.preventDefault();
+  const body={shopName:$("ssn").value.trim(),tagline:$("ssg").value.trim(),discordUrl:$("ssd").value.trim(),announcement:$("ssa").value.trim()};
+  try{const r=await fetch(API+"/api/settings",{method:"POST",headers:{"Content-Type":"application/json",...authH()},body:JSON.stringify(body)});
+    const d=await r.json().catch(()=>({}));if(!r.ok)throw new Error(d.message||r.status);ST=d.settings;applySettings();toast("บันทึกการตั้งค่าแล้ว")}
+  catch(er){toast("บันทึกไม่ได้: "+er.message)}});
+loadSettings();
 </script>
 </body>
 </html>
