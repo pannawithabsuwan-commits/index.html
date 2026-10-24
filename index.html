@@ -288,7 +288,7 @@ input.t,.agrid input.t,.agrid select{background:#120f38;color:var(--ink);border-
 
 <script>
 // ใส่ URL API จริงของคุณ (POST JSON) เพื่อใช้งานจริง; ว่าง = โหมดทดสอบเก็บบัญชีในเบราว์เซอร์นี้เท่านั้น
-const API=/*API*/""; // เซิร์ฟเวอร์ (server.js) จะแทนค่านี้เป็นโดเมนของคุณให้อัตโนมัติ; ว่าง = โหมดทดสอบ
+const API=/*API*/"https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/apl"; // เซิร์ฟเวอร์ (server.js) จะแทนค่านี้เป็นโดเมนของคุณให้อัตโนมัติ; ว่าง = โหมดทดสอบ
 const SIGNUP_ENDPOINT=API&&API+"/api/register", LOGIN_ENDPOINT=API&&API+"/api/login";
 const authH=()=>{const s=session();return s&&s.tok?{Authorization:"Bearer "+s.tok}:{}};
 const $=id=>document.getElementById(id);
@@ -420,7 +420,6 @@ paint();
 (async()=>{if(!API)return;const s=session();if(s&&s.tok){try{const r=await fetch(API+"/api/me",{headers:authH()});if(r.status===401)LS.set("nh_session",null);else if(r.ok){const d=await r.json();LS.set("nh_session",{u:d.username,tok:s.tok,bal:d.balance,role:d.role})}}catch(e){}}paint();loadProducts()})();
 const h=(location.hash||"").slice(1);if(["signup","login","topup","contact"].includes(h))go(h);
 /* TrueMoney angpao top-up: ต้องมีเซิร์ฟเวอร์ (ดู server.js) ใส่ URL ที่นี่ เช่น "https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/apl" */
-const API = "https://mrnpvepwgfdsglmnyfpt.supabase.co/functions/v1/api";
 const TOPUP_ENDPOINT=API&&API+"/api/topup";
 const ANGPAO=/^https:\/\/gift\.truemoney\.com\/campaign\/\?v=[0-9A-Za-z]{18,}$/;
 $("mc").onclick=()=>{$("ft").hidden=false;$("mc").classList.add("on");$("tl").focus()};s
